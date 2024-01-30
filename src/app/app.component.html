@@ -1,1 +1,28 @@
 <h1>Anand Prakash Chaudhary</h1>
+<h5>Form Array</h5>
+<form [formGroup]="userForm">
+  <input type="text" formControlName="name" placeholder="name enter" />
+  <input type="text" formControlName="email" placeholder="email enter" />
+  <input type="text" formControlName="phone" placeholder="phone enter" />
+  <input type="text" formControlName="password" placeholder="password enter" />
+  <div formArrayName="skills">
+    <button (click)="addArray()">+Add Skills</button>
+    <div *ngFor="let skill of getArrayData.controls; let i = index">
+      <div [formGroupName]="i">
+        <input type="text" formControlName="first" placeholder="First skill" />
+        <input
+          type="text"
+          formControlName="second"
+          placeholder="Second skill"
+        />
+        <input type="text" formControlName="third" placeholder="Third skill" />
+        <input
+          type="text"
+          formControlName="fourth"
+          placeholder="Fourth skill"
+        />
+      </div>
+    </div>
+    <button type="submit" (click)="onsubmit()">Submit</button>
+  </div>
+</form>
